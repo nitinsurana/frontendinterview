@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Test3</title>
+  <style>
+	.box {
+		background-image: linear-gradient(to bottom, #3498DB, #2980B9);
+		padding: 10px;
+		height: 100px;
+		width: calc(25% - 10px);
+		float: left;
+		margin: 5px;
+		text-align: center;
+		border-radius: 3px;
+		color: #FFF;
+	}
+  </style>
+</head>
+<body>
+	<h1>
+		Scenario : Implement filter buttons such that the corresponding data is only shown. For e.g. on clicking "Show Programming Languages" only Java, Javascript, C, Python and SQL
+		should be visible.
+	</h1>
+	<div class="btn-container">
+		<button class="btn" id="all">Show All</button>
+		<button class="btn" id="programming-languages">Show Programming Languages</button>
+		<button class="btn" id="js-framework">Show Javascript Frameworks</button>
+	</div>
+	<div class="container">
+		<div data-id="programming-languages" class="box a">Java</div>
+		<div data-id="programming-languages" class="box b">Javascript</div>
+		<div data-id="programming-languages" class="box c">C</div>
+		<div data-id="programming-languages" class="box d">Python</div>
+		<div data-id="programming-languages" class="box e">SQL</div>
+		<div data-id="js-framework" class="box f">jQuery</div>
+		<div data-id="js-framework" class="box g">Backbone</div>
+		<div data-id="js-framework" class="box h">Angular</div>
+		<div data-id="js-framework" class="box i">Underscore</div>
+	</div>
+</body>
+</html>

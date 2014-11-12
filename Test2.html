@@ -1,0 +1,89 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Test2</title>
+  
+</head>
+
+<body>
+<h1>
+ Scenario : I am using modular approach to write code. I create person objects and register them to common module. But when I get try to get their names from the common module, it doesn't work.
+ Below is the code being used. Please help me to achieve the desired behavior.
+</h1>
+  <script>
+	namespace = {abc:{person:{}}}
+	namespace.abc.common = function() {
+		var arr = [];
+
+		var setArr = function(v) {
+			if (v) {
+				arr.push(v);
+			}
+		}
+		var getArr = function() {
+			return arr;
+		}
+
+		var registerArr = function(ns) {
+			if (ns) {
+				for (var obj in ns) {
+					if (obj.hasOwnProperty("getName")) {
+						setArr(obj.getName());
+					}
+				}
+			}
+		}
+		return {
+			setArr: setArr,
+			getArr: getArr,
+			registerArr: registerArr
+		}
+	}
+
+	namespace.abc.form = function() {
+		var salutation = "Hi";
+		var name = '';
+
+		var getSalutation = function() {
+			return salutation;
+		}
+		var getName = function() {
+			return name;
+		}
+		var setSalutation = function(s) {
+			salutation = s;
+		}
+		var setName = function(n) {
+			name = n;
+		}
+
+		return {
+			getSalutation: getSalutation,
+			setSalutation: setSalutation,
+			getName: getName,
+			setName: setName
+		}
+	}
+
+	person = namespace.abc.person;
+
+	person.Dave = new namespace.abc.form();
+
+	person.Dave.setName("Dave");
+
+
+	person.Mitchell = new namespace.abc.form();
+
+	person.Mitchell.setName('Mitchell');
+	person.Mitchell.setSalutation('Howdy');
+
+	alert(person.Mitchell.getSalutation());
+	alert(person.Mitchell.hasOwnProperty('getName'));
+
+	commonObj = new namespace.abc.common();
+
+	commonObj.registerArr(person);
+
+	alert(commonObj.getArr());          //this should return Dave, Mitchell
+  </script>
+</body>
+</html>

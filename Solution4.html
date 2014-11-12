@@ -1,0 +1,44 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Solution4</title>
+  
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+</head>
+<body>
+	<h1>
+		Scenario : A dependency tree is represented in JSON format. We are trying to extract all dependency names along with their URLs. Fix the code to attain 
+		the desired output.
+	</h1>
+	<script>
+	var ValidPaths = {
+		"green":{
+			"url":"greenController.js",
+			"lightgreen" :{
+				"url":"lightGreenController.js",
+				"floragreen":{
+					"url":"floragreenController.js"
+				}
+			}
+		}
+	}
+	var path = ["green"].concat("lightgreen/floragreen".split('/'));
+	var finArr = [];  //should be [ {"label":"green","url":"greenController.js"},
+						//{"label":"lightgreen","url":"lightGreenController.js"},{"label":"floragreen","url":"floragreenController.js"}]
+	
+	function extract(path){
+		finArr=[];
+		var label = "";
+		var obj=ValidPaths;
+		_.each(path, function(str,key){
+			label = '["'+str+'"]';
+			obj=obj[str];
+			finArr.push({label:str,url:obj.url});
+		});
+		return finArr;
+	}
+	
+	extract(path);
+	console.log(finArr);
+	</script>
+</body></html>

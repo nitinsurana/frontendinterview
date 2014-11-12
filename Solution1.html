@@ -1,0 +1,37 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Solution1</title>
+  
+
+
+
+</head>
+<body>
+<script type="text/javascript">
+
+var vehicle = {
+    on: function(event, callback) {
+        setTimeout(callback, 1000);
+    }
+};
+
+function MyConstructor(data, transport) {
+    this.data = data;
+	var that = this;
+    vehicle.on('data', function () {
+       document.getElementById("ans").innerHTML = that.data;
+    });
+}
+
+var obj = new MyConstructor('Car', vehicle);
+</script>
+
+   <b> Question : Fix the javascript code issue, so that vehicle type will be displayed</b> 
+   <br/>
+   <br/>
+   <br/>
+   <span> What is the vehicle type :   </span>  <span id="ans">    </span> 
+
+</body>
+
+</html>
